@@ -1,0 +1,59 @@
+:css
+  body {
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: 0;
+    }
+    
+    #editor,
+    #stage { 
+        margin: 0;
+        position: absolute;
+        top: 0;
+        bottom: 100px;
+        left: 0;
+        right: 0;
+    }
+    #stage {
+      display: none;
+      background: white;
+      color: black;
+      z-index: 99;
+    }
+    .running #stage {
+      display: block;
+    }
+    button {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+    }
+    .running button.run,
+    button.stop {
+      display: none;
+    }
+    .running button.stop {
+      display: inline-block;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+
+%pre#editor // Start paddling!
+
+#stage
+
+%button.run(onclick="Paddle.go();") Go!
+%button.stop(onclick="Paddle.stop();") Stop!
+    
+%script(src="/javascripts/src-min/ace.js" type="text/javascript" charset="utf-8")
+:javascript
+  var editor = ace.edit("editor");
+  editor.setTheme("ace/theme/textmate");
+  editor.getSession().setMode("ace/mode/javascript");
